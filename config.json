@@ -1,0 +1,7 @@
+{
+	"oauth": {
+		"clientID": "482179861206-sre03oibogo6epa4ej8lkj354cc6j1li.apps.googleusercontent.com",
+		"secret": "LcmAZdDjhIxA3VsOme0olkvz",
+		"callback": "http://localhost/login/"
+	}
+}

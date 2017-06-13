@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		{% if message %}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success">
+					{{ message }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="well">
+					<h2>Welcome to QSO_DB</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

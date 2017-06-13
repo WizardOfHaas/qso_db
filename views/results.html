@@ -1,0 +1,39 @@
+{% for qso in results %}
+<div class="col-md-6">
+	<div class="well result entry">
+		<div class="row">
+			<a href="/qso?dr9q.SID={{ qso.dr9q.SID }}">
+				<h2 class="name">{{ qso.dr9q.SID }}</h2>
+			</a>
+		</div>			
+		
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><b>Z_VI</b></td>
+							<td>{{ qso.dr9q.Z_VI }}</td>
+						</tr>
+						<tr>
+							<td><b>RA</b></td>
+							<td>{{ qso.dr9q.RA }}</td>
+						</tr>
+						<tr>
+							<td><b>DEC</b></td>
+							<td>{{ qso.dr9q.DEC }}</td>
+						</tr>
+						<tr>
+							<td><b>BI</b></td>
+							<td>{{ qso.BAL.BI | round(4) }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-6">
+				<img class="thumbnail" src="/img/tmp.png">
+			</div>
+		</div>
+	</div>
+</div>
+{% endfor %}

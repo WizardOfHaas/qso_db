@@ -1,0 +1,52 @@
+<html>
+<head>
+	<title>{{ title }} - qso_db</title>	
+
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
+  
+	<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body id="#deboot">
+	<div class="container" style="height:100%">
+		<nav class="navbar navbar-default" id="header">
+  			<div class="container-fluid">
+    			<!-- Brand and toggle get grouped for better mobile display -->
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="/">qso_db</a>
+    			</div>
+
+    			<!-- Collect the nav links, forms, and other content for toggling -->
+    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      				<form class="navbar-form" action="/search">
+        				<div class="form-group" style="display:inline;">
+          					<div class="input-group" style="display:table;">            					
+            					<input class="form-control" name="q" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text" value="{{ query }}">
+            					<span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
+          					</div>
+        				</div>
+      				</form>      				
+    			</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav>
+
+		<div class="row">
+			{% block content %}
+			{% endblock %}    
+		</div>
+	</div>
+  
+  <footer class="footer text-muted text-right">
+    
+  </footer>
+
+  <div class="corner-ribbon top-left sticky red shadow">Closed Beta 1</div>
+</body>
+</html>

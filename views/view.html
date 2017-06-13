@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-12">
+	<div class="well entry">
+		<div class="row">			
+			<h2 class="name">Quasar {{ dr9q.PLATE + "-" + dr9q.MJD + "-" + dr9q.FIBERID }}</h2>
+			<hr>
+		</div>			
+		
+		<div class="row">
+			<div class="col-md-6">
+				<h2>BAL Data</h2>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td>Field</td>
+							<td>Value</td>
+						</tr>
+					</thead>
+					<tbody>
+						{% for key, val in  BAL %}
+							<tr>
+								<td>{{ key }}</td>
+								<td>{{ val }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-md-6">
+				<h2>Spectrum Plot</h2>
+				<a href="/img/tmp.png">
+					<img class="thumbnail" src="/img/tmp.png">
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<h2>DR9Q Data</h2>
+				{% if dr9q %}
+					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">View @ SDSS</a>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<td>Field</td>
+								<td>Value</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for key, val in  dr9q %}
+								<tr>
+									<td>{{ key }}</td>
+									<td>{{ val }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<h3>No Survey Counterpart</h3>
+				{% endif %}
+			</div>
+
+			<div class="col-md-6">
+				<h2>DR7Q Data</h2>
+				{% if dr7q %}
+					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">View @ SDSS</a>
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<td>Field</td>
+								<td>Value</td>
+							</tr>
+						</thead>
+						<tbody>
+							{% for key, val in  dr7q %}
+								<tr>
+									<td>{{ key }}</td>
+									<td>{{ val }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<h3>No Survey Counterpart</h3>
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+</div>
+{% endblock %}

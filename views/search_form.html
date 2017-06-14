@@ -88,7 +88,13 @@
 				var key = $(this).find(".key").val();
 				var val = $(this).find(".value").val();
 
-				q[key] = val;
+				if(key && val){
+					try{
+						q[key] = JSON.parse(val);
+					}catch(e){
+						alert("Malformed Field");
+					}
+				}
 				//params.push(key + "=" + val);
 			});
 

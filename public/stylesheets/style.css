@@ -18,6 +18,10 @@ body {
 	color: #777;
 }
 
+.navbar-nav > li > a.nav-text{
+  color: #CCC;
+}
+
 hr {
     padding: 0;
     border: none;
@@ -90,6 +94,9 @@ table td{
   word-wrap: break-word;
 }
 
+thead{
+  font-weight: bold;
+}
 
 table{
   table-layout: fixed;

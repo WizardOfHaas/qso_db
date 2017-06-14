@@ -41,7 +41,11 @@
 			<div class="col-md-6">
 				<h2>DR9Q Data</h2>
 				{% if dr9q %}
-					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">View @ SDSS</a>
+					<b>View SDSS</b>:&nbsp;
+					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr9q.PLATE }}&MJD={{ dr9q.MJD }}&RERUN=26&FIBER={{ dr9q.FIBERID }}">Spectra</a>
+					&nbsp;
+					<a href="http://skyserver.sdss.org/dr9/en/tools/chart/navi.asp?RA={{ dr9q.RA }}&dec={{ dr9q.DEC }}">Object</a>
+
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -66,7 +70,11 @@
 			<div class="col-md-6">
 				<h2>DR7Q Data</h2>
 				{% if dr7q %}
-					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">View @ SDSS</a>
+					<b>View SDSS</b>:&nbsp;
+					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">Spectra</a>
+					&nbsp;
+					<a href="http://skyserver.sdss.org/dr7/en/tools/chart/chart.asp?ra={{ dr7q.RA }}&dec={{ dr7q.DEC }}">Object</a>
+
 					<table class="table table-bordered">
 						<thead>
 							<tr>

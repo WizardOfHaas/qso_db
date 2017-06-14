@@ -33,6 +33,10 @@ router.get('/qso', function(req, res, next){
 	});
 });
 
+router.get('/search', function(req, res, next){
+	res.render("search_form.html", req.query);
+});
+
 router.post('/qso', function(req, res, next){
 	var db = req.app.get('db');
 

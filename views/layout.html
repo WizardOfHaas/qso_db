@@ -13,6 +13,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
   
 	<link rel="stylesheet" href="/stylesheets/style.css">
+
+  <!--dataTables includes-->
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.css">
+  
+  <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.js"></script>
 </head>
 <body id="#deboot">
 	<div class="container" style="height:100%">
@@ -23,17 +28,23 @@
       				<a class="navbar-brand" href="/">qso_db</a>
     			</div>
 
+          <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li><a href="/search" class="nav-text">Search</a></li>
+            </ul>
+          </div>
+
     			<!-- Collect the nav links, forms, and other content for toggling -->
-    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      				<form class="navbar-form" action="/search">
+    			<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      				<!--<form class="navbar-form" action="/qso">
         				<div class="form-group" style="display:inline;">
           					<div class="input-group" style="display:table;">            					
             					<input class="form-control" name="q" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text" value="{{ query }}">
             					<span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
           					</div>
         				</div>
-      				</form>      				
-    			</div><!-- /.navbar-collapse -->
+      				</form>
+    			</div>--><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
 		</nav>
 

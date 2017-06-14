@@ -30,7 +30,50 @@
 					</div>
 				</div>
 
-				{% include "results.html" ignore missing %}
+				<div class="col-md-12">
+					<div class="well result entry">
+						<table class="table table-hover" id="search_table">
+							<thead class="thead-default">
+								<tr>
+									<td>Z_VI</td>
+									<td>RA</td>
+									<td>DEC</td>
+									<td>BI</td>
+									<td>DR9Q</td>
+									<td>DR7Q</td>
+									<td></td>
+								</tr>
+							</thead>
+							<tbody>
+								{% for qso in results %}
+									<tr>
+										<td>{{ qso.dr9q.Z_VI }}</td>
+										<td>{{ qso.dr9q.RA }}</td>
+										<td>{{ qso.dr9q.DEC }}</td>
+										<td>{{ qso.BAL.BI | round(4) }}</td>
+										<td>{{ qso.dr9q.PLATE + "-" + qso.dr9q.MJD + "-" + qso.dr9q.FIBERID }}</td>
+										{% if qso.dr7q %}
+											<td>{{ qso.dr7q.PLATE + "-" + qso.dr7q.MJD + "-" + qso.dr7q.FIBER }}</td>
+										{% else %}
+											<td>No Data</td>
+										{% endif %}
+										<td>
+											<a href="/qso?SID={{ qso.SID }}">View-></a>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<script>
+					$(document).ready(function(){
+   						$('#search_table').DataTable();
+					});
+				</script>
+
+				<!--{% include "results.html" ignore missing %}-->
 			{% endif %}
 		</div>
 	</div>

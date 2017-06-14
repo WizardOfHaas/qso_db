@@ -7,13 +7,48 @@
 			<div class="form-group">
 				<textarea class="form-control" rows="10" id="q"></textarea>
 				<br>
+				<button class="btn btn-default" id="search_raw">Search</button>
+			</div>
+		</div>
+
+		<div class="well entry">
+			<h2>Build Query</h2>
+			<div class="form-group">
+				<div class="row filed">
+					<div class="col-md-3">
+						<b>Field</b>
+					</div>
+					<div class="col-md-9">
+						<b>Value</b>
+					</div>
+				</div>
+
+				<div id="q_build">
+					<div class="row field">
+						<div class="col-md-3">
+							<input type="text" class="form-control key">
+						</div>
+						<div class="col-md-9">
+							<input type="text" class="form-control value">
+						</div>
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-md-1">
+						<button class="btn btn-default" id="add">Add Field</button>
+					</div>
+				</div>
+
+				<br>
 				<button class="btn btn-default" id="search">Search</button>
 			</div>
 		</div>
 	</div>
 
 	<script>
-		$("#search").click(function(e){
+		$("#search_raw").click(function(e){
 			try{
 				var q = JSON.parse(
 					$("#q").val()
@@ -31,6 +66,34 @@
 			}catch(e){
 				alert("Syntax Error: Malformed Query");
 			}
+		});
+
+		$("#add").click(function(e){
+			$("#q_build").append(
+				'<br><div class="row field">' +
+					'<div class="col-md-3">' +
+						'<input type="text" class="form-control key">' +
+					'</div>' +
+					'<div class="col-md-9">' +
+						'<input type="text" class="form-control value">' +
+					'</div>' +
+				'</div>'
+			);
+		});
+
+		$("#search").click(function(e){
+			var params = [];
+
+			$(".field").each(function(f){
+				var key = $(this).find(".key").val();
+				var val = $(this).find(".value").val();
+
+				params.push(key + "=" + val);
+			});
+
+			var url = "/qso?" + params.join("&");
+
+			window.location.href = url;
 		});
 	</script>
 {% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<div class="col-md-12">
+		<div class="well entry">
+			<h2>Enter Query</h2>
+			<div class="form-group">
+				<textarea class="form-control" rows="10" id="q"></textarea>
+				<br>
+				<button class="btn btn-default" id="search">Search</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		$("#search").click(function(e){
+			try{
+				var q = JSON.parse(
+					$("#q").val()
+				);
+
+				var params = [];
+				
+				Object.keys(q).forEach(function(k){
+					params.push(k + "=" + JSON.stringify(q[k]));
+				});
+				
+				var url = "/qso?" + params.join("&");
+
+				window.location.href = url;
+			}catch(e){
+				alert("Syntax Error: Malformed Query");
+			}
+		});
+	</script>
+{% endblock %}

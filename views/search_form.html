@@ -42,7 +42,7 @@
 				</div>
 
 				<br>
-				<button class="btn btn-default" id="search">Search</button>
+				<button class="btn btn-default" id="search">Build</button>
 			</div>
 		</div>
 	</div>
@@ -82,18 +82,19 @@
 		});
 
 		$("#search").click(function(e){
-			var params = [];
+			var q = {};
 
 			$(".field").each(function(f){
 				var key = $(this).find(".key").val();
 				var val = $(this).find(".value").val();
 
-				params.push(key + "=" + val);
+				q[key] = val;
+				//params.push(key + "=" + val);
 			});
 
-			var url = "/qso?" + params.join("&");
-
-			window.location.href = url;
+			$('#q').val(JSON.stringify(q));
+			//var url = "/qso?" + params.join("&");
+			//window.location.href = url;
 		});
 	</script>
 {% endblock %}

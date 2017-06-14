@@ -34,7 +34,12 @@ router.get('/qso', function(req, res, next){
 });
 
 router.get('/search', function(req, res, next){
-	res.render("search_form.html", req.query);
+	var db = req.app.get('db');
+	getKeys(db, function(err, keys){
+		res.render("search_form.html", {
+			keys: keys
+		});
+	});
 });
 
 router.post('/qso', function(req, res, next){
@@ -102,6 +107,29 @@ function isJson(str){
     }
 
     return true;
+}
+
+function getKeys(db, callback){
+	db.collection('qso_vac').findOne(
+		{
+			dr7q: {$exists: true},
+			BAL: {$exists: true
+		}
+	}, function(err, data){
+		var keys = [];
+
+		Object.keys(data).forEach(function(k){
+        	if(typeof data[k] === "object" && data[k] !== null && k != "_id"){
+            	Object.keys(data[k]).forEach(function(v){
+                	if(v != "_id"){
+                    	keys.push(k + "." + v);
+                	}
+            	});
+        	}
+    	});
+
+    	callback(err, keys);
+	});
 }
 
 module.exports = router;

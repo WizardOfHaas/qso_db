@@ -45,9 +45,23 @@
 				<button class="btn btn-default" id="search">Build</button>
 			</div>
 		</div>
+
+		<div class="well entry">
+			<h2>How To Write Queries</h2>
+			<br>
+			<p>
+				Queries are carried out using MongoDB's query format. A tutorial for writing these types of queries can be found <a href="https://docs.mongodb.com/manual/tutorial/query-documents/">here</a>.
+			</p>
+		</div>
 	</div>
 
 	<script>
+		var keys = {{ keys | dump }};
+
+		$(".key").autocomplete({
+      		source: keys
+    	});
+
 		$("#search_raw").click(function(e){
 			try{
 				var q = JSON.parse(
@@ -90,17 +104,14 @@
 
 				if(key && val){
 					try{
-						q[key] = JSON.parse(val);
+						q[key] = JSON.parse(val, null, "\t");
 					}catch(e){
 						alert("Malformed Field");
 					}
 				}
-				//params.push(key + "=" + val);
 			});
 
 			$('#q').val(JSON.stringify(q));
-			//var url = "/qso?" + params.join("&");
-			//window.location.href = url;
 		});
 	</script>
 {% endblock %}

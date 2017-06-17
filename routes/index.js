@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
+var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next){
@@ -11,11 +12,30 @@ router.get('/qso', function(req, res, next){
 	var db = req.app.get('db');
 
 	var match = {
-		q: parse_match(req.query)
+		q: {}
 	};
+
+	if(req.query.t){
+		var t = parse_t(req.query.t);
+		delete req.query.t;
+
+		if(!t.error){
+			match.q = t;
+		}
+	}
+
+	Object.keys(req.query).forEach(function(k){
+		if(k != t){
+			match.q[k] = req.query[k];
+		}
+	});
 
 	console.log(match);
 
+	/*var match = {
+		q: parse_match(req.query)
+	};*/
+	
 	find_qso(db, match, function(err, d){
 		if(d.length == 1){
 			res.render("view.html", d[0]);
@@ -61,6 +81,41 @@ router.post('/qso', function(req, res, next){
 	}
 });
 
+function run_q(db, file, callback){
+	//Load Query File, with sanitization
+	var path = './q/' + file + '.json';
+
+	if(fs.existsSync(path)){
+		var cont = fs.readFileSync(path);
+
+		if(isJson(cont)){
+			var q = JSON.parse(cont);
+			find_qso(db, q, callback);
+		}else{
+			callback({error: "Invalid JSON"}, null);
+		}
+	}else{
+		callback({error: "File '" + path + "' Not Found"},null);
+	}
+}
+
+function parse_t(file){
+	var path = './q/' + file + '.json';
+
+	if(fs.existsSync(path)){
+		var cont = fs.readFileSync(path);
+
+		if(isJson(cont)){
+			var q = JSON.parse(cont);
+			return q;
+		}else{
+			return {error: "Invalid JSON"};
+		}
+	}else{
+		return {error: "File '" + path + "' Not Found"};
+	}
+}
+
 function parse_match(match){
 	Object.keys(match).forEach(function(k){
 		var t = Number(match[k]);
@@ -78,7 +133,7 @@ function parse_match(match){
 }
 
 function find_qso(db, req, callback){
-	var match = req.q;
+	var match = req.q || {};
 	var sort = req.sort || {};
 
 	db.collection('qso_vac').find(

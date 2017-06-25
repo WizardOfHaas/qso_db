@@ -9,8 +9,7 @@
 						<div class="row">
 							<div class="col-md-12 text-center">
 								<h3>
-									No Entries Found with<br>
-									"{{ query }}"
+									No Entries Found
 								</h3>
 							</div>
 						</div>
@@ -55,34 +54,34 @@
 						<br>
 					</div>
 				</div>
+			{% endif %}
 
-				<div class="col-md-12">
-					<div class="well result entry">
-						<div class="col-md-6">
-							<h3>Query: </h3>
-							<p>
-								<pre id="json">{{ q | dump(2) }}</pre>
-							</p>
-						</div>
-						<div class="col-md-6">
-							<h3>Matches:</h3>
-							<p>{{ results.length }} Samples</p>
-						</div>
+			<div class="col-md-12">
+				<div class="well result entry">
+					<div class="col-md-6">
+						<h3>Query: </h3>
+						<p>
+							<pre id="json">{{ q | dump(2) }}</pre>
+						</p>
+					</div>
+					<div class="col-md-6">
+						<h3>Matches:</h3>
+						<p>{{ results.length }} Samples</p>
 					</div>
 				</div>
+			</div>
 
-				<script>
-					$(document).ready(function(){
-   						$('#search_table').DataTable();
+			<script>
+				$(document).ready(function(){
+   					$('#search_table').DataTable();
 
-   						$('#json').html(
-   							JSON.stringify(
-   								JSON.parse($('#json').html()),
-   							null, 2)
-   						);
-					});
-				</script>
-			{% endif %}
+   					$('#json').html(
+   						JSON.stringify(
+   							JSON.parse($('#json').html()),
+   						null, 2)
+   					);
+				});
+			</script>
 		</div>
 	</div>
 {% endblock %}

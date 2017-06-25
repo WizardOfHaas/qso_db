@@ -41,7 +41,7 @@ router.get('/qso', function(req, res, next){
 	find_qso(db, match, function(err, d){
 		if(d.length == 1){
 			res.render("view.html", d[0]);
-		}else if(d.length > 1){
+		}else if(d.length != 1){
 			res.render("search.html", {
 				results: d,
 				q: match

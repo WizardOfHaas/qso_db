@@ -4,17 +4,33 @@ body {
   background-color: #b0a18e;
 }
 
+
+#json{
+  height: 200px;
+  overflow: scroll;
+}
+
 .navbar {
   margin-bottom: 20px;
 }
 
-#header {
+#header{
 	background-color: #262216;
 	color: #777;
 	border-color: #262216;
 }
 
-.navbar-nav > li > a.nav-text:hover {
+#header > div > div > ul.navbar-nav > li > .themed-dropdown,
+li.dropdown > ul.dropdown-menu,
+li.dropdown > ul.dropdown-menu > li > a{
+  background-color: #262216;
+  color: #CCC;
+  border-color: #262216;
+}
+
+.navbar-nav > li > a.nav-text:hover,
+#header > div > div > ul.navbar-nav > li > .themed-dropdown:hover,
+li.dropdown > ul.dropdown-menu > li > a:hover{
 	color: #777;
 }
 

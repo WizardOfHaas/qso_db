@@ -19,6 +19,7 @@
 			{% else %}
 				<div class="col-md-12">
 					<div class="well result entry">
+						<br>
 						<table class="table table-hover" id="search_table">
 							<thead class="thead-default">
 								<tr>
@@ -51,6 +52,7 @@
 								{% endfor %}
 							</tbody>
 						</table>
+						<br>
 					</div>
 				</div>
 
@@ -58,7 +60,9 @@
 					<div class="well result entry">
 						<div class="col-md-6">
 							<h3>Query: </h3>
-							<p>{{ q | dump('\t') }}</p>
+							<p>
+								<pre id="json">{{ q | dump(2) }}</pre>
+							</p>
 						</div>
 						<div class="col-md-6">
 							<h3>Matches:</h3>
@@ -70,10 +74,14 @@
 				<script>
 					$(document).ready(function(){
    						$('#search_table').DataTable();
+
+   						$('#json').html(
+   							JSON.stringify(
+   								JSON.parse($('#json').html()),
+   							null, 2)
+   						);
 					});
 				</script>
-
-				<!--{% include "results.html" ignore missing %}-->
 			{% endif %}
 		</div>
 	</div>

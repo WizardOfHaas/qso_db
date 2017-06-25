@@ -26,7 +26,12 @@
 				<div id="q_build">
 					<div class="row field">
 						<div class="col-md-3">
-							<input type="text" class="form-control key">
+							<!--<input type="text" class="form-control key">-->
+							<select class="form-control key">
+								{% for key in keys %}
+									<option value="{{ key }}">{{ key }}</option>
+								{% endfor %}
+							</select>
 						</div>
 						<div class="col-md-9">
 							<input type="text" class="form-control value">
@@ -50,7 +55,10 @@
 			<h2>How To Write Queries</h2>
 			<br>
 			<p>
-				Queries are carried out using MongoDB's query format. A tutorial for writing these types of queries can be found <a href="https://docs.mongodb.com/manual/tutorial/query-documents/">here</a>.
+				The easiest way to search our database is by using the query builder above. Simply select the field from the dropdown and then enter a value in the text box next to the dropdown. Queries are carried out using MongoDB's query format. A tutorial for writing these types of queries can be found <a href="https://docs.mongodb.com/manual/tutorial/query-documents/">here</a>.
+			</p>
+			<p>
+				All fields from DR9Q (<a href="http://www.sdss3.org/dr9/algorithms/qso_catalog.php">Paris et al.</a>) and DR7Q (<a href="http://adsabs.harvard.edu/abs/2011ApJS..194...45S">Shen et al.</a>) can be queried.
 			</p>
 		</div>
 	</div>
@@ -84,14 +92,18 @@
 
 		$("#add").click(function(e){
 			$("#q_build").append(
-				'<br><div class="row field">' +
-					'<div class="col-md-3">' +
-						'<input type="text" class="form-control key">' +
-					'</div>' +
-					'<div class="col-md-9">' +
-						'<input type="text" class="form-control value">' +
-					'</div>' +
-				'</div>'
+				`<br><div class="row field">
+					<div class="col-md-3">
+						<select class="form-control key">
+							{% for key in keys %}
+								<option value="{{ key }}">{{ key }}</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col-md-9">
+						<input type="text" class="form-control value">
+					</div>
+				</div>`
 			);
 		});
 

@@ -30,6 +30,8 @@ router.get('/qso', function(req, res, next){
 		}
 	});
 
+	match.q = parse_match(match.q);
+
 	console.log(match);
 
 	/*var match = {

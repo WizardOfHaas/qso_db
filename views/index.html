@@ -15,9 +15,36 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well">
-					<h2>Welcome to QSO_DB</h2>
+					<h2>Data Access: EHVO-I Survey of SDSS DR9Q</h2>
+
+					<p>
+						This catalog presents the results of spectrum analysis carried out on a sample set of quasars from Sloan Digital Sky Survey Data Release 9 (SDSS DR9). Our methodology, data sources, and catalog access is detailed below.
+					</p>
+
+					<h3>Methodology</h3>
+					<p>
+					</p>
+
+					<h3>Data Sources and Selection Criteria</h3>
+					<p>
+						Our spectrum analysis was carried out using spectra from SDSS DR9. We selected candidate spectra from SDSS DR9's Quasar Catalog (Paris et al.) using two main criteria. First, we limited our search to spectra with a signal-to-noise ration (S/N) >= 10. This was done because we found that BAL features were difficult to distinguish from noise in samples with lower S/N. We also filtered for redshift (z) >= 1.9. This was done to shift CIV features into SDSS's spectral coverage range. From our filtering criteria we ended up with 6760 candidate spectra.
+					</p>
+					<p>
+						We also present data from value added SDSS catalogs: DR9Q and DR7Q.
+					</p>
+						DR9Q contains both data calculated by Paris et al. 2012 and VLA Faint Images of the Radio Sky at 20-cm (FIRST) radiometric data where available. This was the data set we used to generate our survey. More information about DR9Q can be found <a href="http://www.sdss3.org/dr9/algorithms/qso_catalog.php">here</a>.
+					</p>
+					<p>
+						DR7Q contains data calculated by Schneider et al. 2010. More information about DR7Q can be found <a href="http://classic.sdss.org/dr7/products/value_added/qsocat_dr7.html">here</a>.
+					</p>
+
+					<h3>Data Access</h3>
+					<p>
+						This catalog presents the results of our EHVO survey of SDSS DR9Q, as well as other related data sources. At it's base, each entry contains DR9Q data, with EHVO-I and DR7Q data where available. Data can be accessed either through this web interface, or a REST API using both manual and templated queries. Additionally, the  web interface provides links to data associated to each sample on SDSS's main sites for DR9 and DR7, where available.
+					</p>
+
 					<br>
-					<a href="/qso?t=ehvo">View EHVO Catalog</a>
+					<a href="/qso?t=ehvo">View EHVO-I DR0 Catalog</a>
 				</div>
 			</div>
 		</div>

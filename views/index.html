@@ -21,11 +21,12 @@
 						This catalog presents the results of spectrum analysis carried out on a sample set of quasars from Sloan Digital Sky Survey Data Release 9 (SDSS DR9). Our methodology, data sources, and catalog access is detailed below.
 					</p>
 
-					<h3>Methodology</h3>
+					<h3>1. Methodology</h3>
 					<p>
+						The first step in generating our survey was applying a filter set to out data. The filtering criteria and data sets used are explained in detail below, in Section 2. After filtering we passed our spectra off to a program we wrote to do the actual spectrum analysis. First, our spectra were normalized using a powerlaw fit. After fitting, the spectra were smoother using a 3 point boxcar algorithm. Finally, a balnicity index was calculated for each spectra. Once our program was finished we visually inspected each spectra to remove false positives.
 					</p>
 
-					<h3>Data Sources and Selection Criteria</h3>
+					<h3>2. Data Sources and Selection Criteria</h3>
 					<p>
 						Our spectrum analysis was carried out using spectra from SDSS DR9. We selected candidate spectra from SDSS DR9's Quasar Catalog (Paris et al.) using two main criteria. First, we limited our search to spectra with a signal-to-noise ration (S/N) >= 10. This was done because we found that BAL features were difficult to distinguish from noise in samples with lower S/N. We also filtered for redshift (z) >= 1.9. This was done to shift CIV features into SDSS's spectral coverage range. From our filtering criteria we ended up with 6760 candidate spectra.
 					</p>
@@ -38,7 +39,7 @@
 						DR7Q contains data calculated by Shen et al. 2011. More information about DR7Q can be found <a href="http://adsabs.harvard.edu/abs/2011ApJS..194...45S">here</a>.
 					</p>
 
-					<h3>Data Access</h3>
+					<h3>3. Data Access</h3>
 					<p>
 						This catalog presents the results of our EHVO survey of SDSS DR9Q, as well as other related data sources. At it's base, each entry contains DR9Q data, with EHVO-I and DR7Q data where available. Data can be accessed either through this web interface, or a REST API using both manual and templated queries. Additionally, the  web interface provides links to data associated to each sample on SDSS's main sites for DR9 and DR7, where available.
 					</p>

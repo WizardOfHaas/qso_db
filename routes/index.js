@@ -155,6 +155,9 @@ function find_qso(db, req, callback){
 				});
 
 				d.clean_SID = padLeft(d.dr9q.PLATE.toString(), 4) + "-" + padLeft(d.dr9q.MJD.toString(), 5) + "-" + padLeft(d.dr9q.FIBERID.toString(), 4);
+
+				d.BAL.BI_individual = d.BAL.BI_individual.map(function(d){return d.toFixed(4);});
+				
 				return d;
 			});
 		}

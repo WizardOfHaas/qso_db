@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="col-md-12">
+	<div class="well result entry">
+		<h2>Description of Search Table Fields</h2>
+		<p>
+
+		</p>
+
+		<table class="table table-hover">
+			<thead class="thead-default">
+				<tr>
+					<td><b>Field</b></td>
+					<td><b>Source</b></td>
+					<td><b>Units</b></td>
+					<td><b>Description</b></td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>z_em</td>
+					<td>DR9Q's Z_PCA</td>
+					<td>unitless</td>
+					<td>DR9Q's refined principal-component analysis redshift.</td>
+				</tr>
+				<tr>
+					<td>RA</td>
+					<td>DR9Q's RA</td>
+					<td>decimal degrees</td>
+					<td>Right Ascension</td>
+				</tr>
+				<tr>
+					<td>DEC</td>
+					<td>DR9Q's DEC</td>
+					<td>decimal degrees</td>
+					<td>Declination</td>
+				</tr>
+				<tr>
+					<td>vMax</td>
+					<td>EHVO-I DR1's vMax</td>
+					<td>km/s</td>
+					<td>The max velocity of the fastest BAL in the spectrum. Some spectra have multiple BAL, so multiple vMax values are presented in the detailed sample view.</td>
+				</tr>
+				<tr>
+					<td>DR9Q</td>
+					<td></td>
+					<td></td>
+					<td>"plate-mjd-fiberid" index for sample in DR9Q</td>
+				</tr>
+				<tr>
+					<td>DR7Q</td>
+					<td></td>
+					<td></td>
+					<td>"plate-mjd-fiberid" index for sample in DR7Q, if available</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

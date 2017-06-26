@@ -64,6 +64,10 @@ router.get('/search', function(req, res, next){
 	});
 });
 
+router.get('/table_desc', function(req, res, next){
+	res.render("table_desc.html", req.query);
+});
+
 router.post('/qso', function(req, res, next){
 	var db = req.app.get('db');
 
@@ -142,13 +146,16 @@ function find_qso(db, req, callback){
 		match
 	).sort(sort).toArray(function(err, d){
 		if(!err){
-			d.forEach(function(d){
+			d = d.map(function(d){
 				Object.keys(d).forEach(function(k){
 					//Redact properties
 					delete d[k].SID;
 					delete d[k]._id;
 					delete d[k].file;
 				});
+
+				d.clean_SID = padLeft(d.dr9q.PLATE.toString(), 4) + "-" + padLeft(d.dr9q.MJD.toString(), 5) + "-" + padLeft(d.dr9q.FIBERID.toString(), 4);
+				return d;
 			});
 		}
 
@@ -187,6 +194,10 @@ function getKeys(db, callback){
 
     	callback(err, keys);
 	});
+}
+
+function padLeft(nr, n, str){
+    return Array(n - String(nr).length + 1).join(str || '0') + nr;
 }
 
 module.exports = router;

@@ -18,14 +18,16 @@
 			{% else %}
 				<div class="col-md-12">
 					<div class="well result entry">
-						<br>
+						<p>
+							Click <a href="/table_desc">here</a> for a description of the table fields below.
+						</p>
 						<table class="table table-hover" id="search_table">
 							<thead class="thead-default">
 								<tr>
-									<td>Z_VI</td>
-									<td>RA</td>
-									<td>DEC</td>
-									<td>BI</td>
+									<td>z_em [z_PCA]</td>
+									<td>RA [deg]</td>
+									<td>DEC [deg]</td>
+									<td>vMax [km/s]</td>
 									<td>DR9Q</td>
 									<td>DR7Q</td>
 									<td></td>
@@ -34,16 +36,24 @@
 							<tbody>
 								{% for qso in results %}
 									<tr>
-										<td>{{ qso.dr9q.Z_VI }}</td>
+										<td>{{ qso.dr9q.Z_PCA | round(3) }}</td>
 										<td>{{ qso.dr9q.RA }}</td>
 										<td>{{ qso.dr9q.DEC }}</td>
-										<td>{{ qso.BAL.BI | round(4) }}</td>
+
+										{% if qso.BAL.vmaxs[0] %}
+											<td>{{ qso.BAL.vmaxs | sort(false, false) | first }}</td>
+										{% else %}
+											<td>N/A</td>
+										{% endif %}
+
 										<td>{{ qso.dr9q.PLATE + "-" + qso.dr9q.MJD + "-" + qso.dr9q.FIBERID }}</td>
+
 										{% if qso.dr7q %}
 											<td>{{ qso.dr7q.PLATE + "-" + qso.dr7q.MJD + "-" + qso.dr7q.FIBER }}</td>
 										{% else %}
 											<td>No Data</td>
 										{% endif %}
+
 										<td>
 											<a href="/qso?SID={{ qso.SID }}">View-></a>
 										</td>

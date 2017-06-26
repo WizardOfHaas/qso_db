@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<!--Add Units!-->
 <div class="col-md-12">
 	<div class="well entry">
 		<div class="row">			
@@ -18,21 +19,40 @@
 							<td>Value</td>
 						</tr>
 					</thead>
-					<tbody>
-						{% for key, val in  BAL %}
-							<tr>
-								<td>{{ key }}</td>
-								<td>{{ val }}</td>
-							</tr>
-						{% endfor %}
+					<tbody>		
+						<tr>
+							<td>vMax [km/s]</td>
+							<td>{{ BAL.vmaxs | join("<br>") }}</td>
+						</tr>
+						<tr>
+							<td>vMin [km/s]</td>
+							<td>{{ BAL.vmins | join("<br>") }}</td>
+						</tr>
+						<tr>
+							<td>Individial EW [km/s]</td>
+							<td>{{ BAL.EW_individial | join("<br>") }}</td>
+						</tr>						
+						<tr>
+							<td>BAL depths</td>
+							<td>{{ BAL.depth | join("<br>") }}</td>
+						</tr>
+						<tr>
+							<td>Individual BI</td>
+							<td>{{ BAL.BI_individual | join("<br>") }}</td>
+						</tr>
+						<tr>
+							<td>BI total</td>
+							<td>{{ BAL.BI }}</td>
+						</tr>	
 					</tbody>
 				</table>
 			</div>
 
 			<div class="col-md-6">
 				<h2>Spectrum Plot</h2>
-				<a href="/img/tmp.png">
-					<img class="thumbnail" src="/img/tmp.png">
+				<a href="/img/specs/spec_{{ clean_SID }}.png">
+					<img width="100%" src="/img/specs/spec_{{ clean_SID }}.png">
+					<!--<img class="thumbnail" src="/img/tmp.png">-->
 				</a>
 			</div>
 		</div>
@@ -42,9 +62,7 @@
 				<h2>DR9Q Data</h2>
 				{% if dr9q %}
 					<b>View SDSS</b>:&nbsp;
-					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr9q.PLATE }}&MJD={{ dr9q.MJD }}&RERUN=26&FIBER={{ dr9q.FIBERID }}">Spectra</a>
-					&nbsp;
-					<a href="http://skyserver.sdss.org/dr9/en/tools/chart/navi.asp?RA={{ dr9q.RA }}&dec={{ dr9q.DEC }}">Object</a>
+					<a href="http://skyserver.sdss.org/dr9/en/tools/explore/obj.asp?ra={{ dr9q.RA }}&dec={{ dr9q.DEC }}">Object</a>
 
 					<table class="table table-bordered">
 						<thead>
@@ -73,7 +91,7 @@
 					<b>View SDSS</b>:&nbsp;
 					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">Spectra</a>
 					&nbsp;
-					<a href="http://skyserver.sdss.org/dr7/en/tools/chart/chart.asp?ra={{ dr7q.RA }}&dec={{ dr7q.DEC }}">Object</a>
+					<a href="http://skyserver.sdss.org/dr7/en/tools/explore/obj.asp?ra={{ dr7q.RA }}&dec={{ dr7q.DEC }}">Object</a>
 
 					<table class="table table-bordered">
 						<thead>

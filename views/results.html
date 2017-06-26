@@ -12,8 +12,8 @@
 				<table class="table">
 					<tbody>
 						<tr>
-							<td><b>Z_VI</b></td>
-							<td>{{ qso.dr9q.Z_VI }}</td>
+							<td><b>z_em((z_PCA)</b></td>
+							<td>{{ qso.dr9q.Z_PCA || round(3) }}</td>
 						</tr>
 						<tr>
 							<td><b>RA</b></td>
@@ -24,14 +24,14 @@
 							<td>{{ qso.dr9q.DEC }}</td>
 						</tr>
 						<tr>
-							<td><b>BI</b></td>
-							<td>{{ qso.BAL.BI | round(4) }}</td>
+							<td><b>vMax (km/s)</b></td>
+							<td>{{ qso.BAL.vmaxs | round(4) }}</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="col-md-6">
-				<img class="thumbnail" src="/img/tmp.png">
+				<img class="thumbnail" src="/img/tmp.png"> 
 			</div>
 		</div>
 	</div>

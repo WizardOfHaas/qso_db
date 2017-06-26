@@ -29,7 +29,7 @@
 							<td>{{ BAL.vmins | join("<br>") }}</td>
 						</tr>
 						<tr>
-							<td>Individial EW [km/s]</td>
+							<td>Individual EW [km/s]</td>
 							<td>{{ BAL.EW_individial | join("<br>") }}</td>
 						</tr>						
 						<tr>
@@ -52,7 +52,6 @@
 				<h2>Spectrum Plot</h2>
 				<a href="/img/specs/spec_{{ clean_SID }}.png">
 					<img width="100%" src="/img/specs/spec_{{ clean_SID }}.png" alt="Spectrum not found" onerror="this.src='/img/specs/no-spec.png';">
-					<!--<img class="thumbnail" src="/img/tmp.png">-->
 				</a>
 			</div>
 		</div>
@@ -62,6 +61,8 @@
 				<h2>DR9Q Data</h2>
 				{% if dr9q %}
 					<b>View SDSS</b>:&nbsp;
+					<a href="https://dr9.sdss.org/spectrumDetail?plateid={{ dr9q.PLATE }}&mjd={{ dr9q.MJD }}&RERUN=26&fiber={{ dr9q.FIBERID }}">Spectrum</a>
+					&nbsp;
 					<a href="http://skyserver.sdss.org/dr9/en/tools/explore/obj.asp?ra={{ dr9q.RA }}&dec={{ dr9q.DEC }}">Object</a>
 
 					<table class="table table-bordered">
@@ -89,7 +90,7 @@
 				<h2>DR7Q Data</h2>
 				{% if dr7q %}
 					<b>View SDSS</b>:&nbsp;
-					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">Spectra</a>
+					<a href="http://das.sdss.org/cgi-bin/fiber?PLATE={{ dr7q.PLATE }}&MJD={{ dr7q.MJD }}&RERUN=26&FIBER={{ dr7q.FIBER }}">Spectrum</a>
 					&nbsp;
 					<a href="http://skyserver.sdss.org/dr7/en/tools/explore/obj.asp?ra={{ dr7q.RA }}&dec={{ dr7q.DEC }}">Object</a>
 
